@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "Inter-Bold";
+    src: url("fonts/Inter-Bold.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+    padding: 3rem;
+    background-color: black;
+}
+
+#startscreen {
+    width: calc(100vw - 6rem);
+    height: calc(100vh - 6rem);
+    background-color: black;
+}
+
+#selection {
+    display: none;
+}
+
+#sentence {
+    height: 160px;
+    margin: 2rem 0 8rem 0;
+    font-family: "Inter-Bold";
+    color: black;
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+#answers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    row-gap: 3rem;
+}
+
+.answer {
+    position: relative;
+    width: 30%;
+    height: 200px;
+    border-radius: 32px;
+    box-shadow: 2px 2px 4px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+.number {
+    position: absolute;
+    top: -32px;
+    left: -32px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 4px black;
+    background-color: white;
+}
+
+.number > p {
+    font-family: "Inter-Bold";
+    color: black;
+    font-size: 24px;
+}
+
+.answer > p {
+    font-family: "Inter-Bold";
+    color: black;
+    font-size: 36px;
+}
+
+#result {
+    display: none;
+}
+
+.result-sentence {
+    margin-bottom: 1rem;
+    font-family: "Inter-Bold";
+    color: black;
+    font-size: 42px;
+    line-height: 1.5;
+}
