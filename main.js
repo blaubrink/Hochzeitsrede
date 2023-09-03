@@ -31,6 +31,7 @@ const selectedAnswers = [
 
 let round = 0;
 
+const elWrapper = document.querySelector("#wrapper");
 const elStartscreen = document.querySelector("#startscreen");
 const elSelection = document.querySelector("#selection");
 const elResult = document.querySelector("#result");
@@ -39,7 +40,7 @@ const elAnswerContents = document.querySelectorAll(".answer > p");
 const elResultSentences = document.querySelectorAll(".result-sentence");
 
 function startGame() {
-    document.body.style.backgroundColor = "white";
+    elWrapper.style.backgroundColor = "white";
     elStartscreen.style.display = "none";
     elSelection.style.display = "block";
 }
