@@ -18,13 +18,13 @@ const possibleAnswers = [
     "Gemeinschaft",
     "Jesus",
     "Liebe",
-    "Trauer",
+    "Freunde",
     "Italien",
     "Urlaub",
     "Glück",
     "zu viel Alkohol",
     "Grillen",
-    "Dummheit",
+    "Intelligenz",
     "Sohn von Wolfgang Petri",
     "gemeinsame Zeit",
     "Playstation",
@@ -84,11 +84,11 @@ const elResultSentences = document.querySelectorAll(".result-sentence");
 elWrapper.style.transform = `scale(${window.innerHeight / 864})`;
 console.log(window.innerHeight);
 
-function startGame() {
+/*function startGame() {
     elWrapper.style.backgroundColor = "white";
     elStartscreen.style.display = "none";
     elSelection.style.display = "block";
-}
+}*/
 
 function setNewSentence() {
     elSentence.innerHTML = sentences[round][0] + selectedAnswers[round] + sentences[round][1];
@@ -111,6 +111,14 @@ function setNewSentence() {
             } else if (round === 1 || round === 3 || round === 4) {
                 answers[i] = "einen verdammt schweren Kühlschrank";
             }
+        } else if (answers[i] === "die Sprache der Tiere" && (round === 0 || round === 6 || round === 7)) {
+            answers[i] = "Sprache der Tiere";
+        } else if (answers[i] === "realistische Erwartungen" && (round === 6 || round === 7)) {
+            answers[i] = "realistischen Erwartungen";
+        }
+
+        if (round === 5) {
+            answers[i] = answers[i].charAt(0).toUpperCase() + answers[i].slice(1);
         }
 
         elAnswerContents[i].innerHTML = answers[i];
@@ -138,13 +146,89 @@ function setAnswer(number) {
             selectedAnswers[i] === "Katzen" || 
             selectedAnswers[i] === "Vegetarier" || 
             selectedAnswers[i] === "Diskussionen bis spät in die Nacht" || 
-            selectedAnswers[i] === "realistische Erwartungen" ||
+            selectedAnswers[i] === "Realistische Erwartungen" ||
             selectedAnswers[i] === "Eier" ||
-            selectedAnswers[i] === "Gutscheine ohne Verfallsdatum") {
+            selectedAnswers[i] === "Gutscheine ohne Verfallsdatum" ||
+            selectedAnswers[i] === "Freunde" ||
+            selectedAnswers[i] === "edle Tropfen" ||
+            selectedAnswers[i] === "Edle Tropfen") {
                 if (i === 2) {
                     sentences[i][1] = " geschahen, wusste ich, dass ihr füreinander bestimmt seid.";
                 } else if (i === 5) {
                     sentences[i][1] = " müssen euch nicht peinlich sein.";
+                }
+            }
+            if (selectedAnswers[i] === "Friederike" ||
+            selectedAnswers[i] === "Familie" ||
+            selectedAnswers[i] === "Schwester" ||
+            selectedAnswers[i] === "Gemeinschaft" ||
+            selectedAnswers[i] === "Liebe" ||
+            selectedAnswers[i] === "Freunde" ||
+            selectedAnswers[i] === "Intelligenz" ||
+            selectedAnswers[i] === "gemeinsame Zeit" ||
+            selectedAnswers[i] === "Playstation" ||
+            selectedAnswers[i] === "Pizza zum Mitnehmen" ||
+            selectedAnswers[i] === "keine Rücksicht auf Verluste" ||
+            selectedAnswers[i] === "Faulheit" ||
+            selectedAnswers[i] === "edle Tropfen" ||
+            selectedAnswers[i] === "offensiv ausgelebte Ahnungslosigkeit" ||
+            selectedAnswers[i] === "Sprache der Tiere" ||
+            selectedAnswers[i] === "Siesta bis 8 Uhr abends" ||
+            selectedAnswers[i] === "deine Mutter" ||
+            selectedAnswers[i] === "Kinder" ||
+            selectedAnswers[i] === "Vegetarier" ||
+            selectedAnswers[i] === "Diskussionen bis spät in die Nacht" ||
+            selectedAnswers[i] === "Eier" ||
+            selectedAnswers[i] === "realistische Erwartungen" ||
+            selectedAnswers[i] === "realistischen Erwartungen" ||
+            selectedAnswers[i] === "Gutscheine ohne Verfallsdatum" ||
+            selectedAnswers[i] === "plötzliche Veränderung") {
+                if (i === 0) {
+                    sentences[i][0] = "Liebe ";
+                } else if (i === 6) {
+                    sentences[i][0] = "Behaltet eure "
+                } else if (i === 7) {
+                    sentences[i][0] = "Eure "
+                }
+            } else if (selectedAnswers[i] === "Merlin" ||
+            selectedAnswers[i] === "Jesus" ||
+            selectedAnswers[i] === "Urlaub" ||
+            selectedAnswers[i] === "zu viel Alkohol" ||
+            selectedAnswers[i] === "Sohn von Wolfgang Petri" ||
+            selectedAnswers[i] === "Feminismus" ||
+            selectedAnswers[i] === "Jonas" ||
+            selectedAnswers[i] === "Verkehr" ||
+            selectedAnswers[i] === "Don Papa" ||
+            selectedAnswers[i] === "Deutschrap in Dauerschleife" ||
+            selectedAnswers[i] === "gesunder Menschenverstand" ||
+            selectedAnswers[i] === "gesunden Menschenverstand" ||
+            selectedAnswers[i] === "Hugo, der Boss" ||
+            selectedAnswers[i] === "Hugo, den Boss" ||
+            selectedAnswers[i] === "verdammt schwerer Kühlschrank" ||
+            selectedAnswers[i] === "verdammt schweren Kühlschrank") {
+                if (i === 0) {
+                    sentences[i][0] = "Lieber ";
+                } else if (i === 6) {
+                    sentences[i][0] = "Behaltet euren "
+                } else if (i === 7) {
+                    sentences[i][0] = "Euer "
+                }
+            } else if (selectedAnswers[i] === "Brautpaar" ||
+            selectedAnswers[i] === "Italien" ||
+            selectedAnswers[i] === "Glück" ||
+            selectedAnswers[i] === "Grillen" ||
+            selectedAnswers[i] === "Herne-West" ||
+            selectedAnswers[i] === "Corona" ||
+            selectedAnswers[i] === "blindes Vertrauen" ||
+            selectedAnswers[i] === "nicht viel" ||
+            selectedAnswers[i] === "zu viel" ||
+            selectedAnswers[i] === "halbvolles Bier") {
+                if (i === 0) {
+                    sentences[i][0] = "Liebes ";
+                } else if (i === 6) {
+                    sentences[i][0] = "Behaltet euer "
+                } else if (i === 7) {
+                    sentences[i][0] = "Euer "
                 }
             }
 
