@@ -23,9 +23,8 @@
         }
 
         #wrapper {
-            width: 1536px;
-            height: 864px;
-            /*background-color: black;*/
+            width: 100vw;
+            height: 100vh;
             background-color: white;
             padding: 3rem;
             transform-origin: top left;
@@ -34,14 +33,14 @@
             left: 0;
         }
 
-        /*#startscreen {
+        #startscreen {
             width: 100%;
             height: 100%;
         }
 
         #selection {
             display: none;
-        }*/
+        }
 
         #sentence {
             height: 160px;
@@ -115,7 +114,7 @@
 
 <body>
     <div id="wrapper">
-        <!--<div id="startscreen" onclick="startGame()"></div>-->
+        <div id="startscreen" onclick="startGame()"></div>
         <div id="selection">
             <p id="sentence"></p>
             <div id="answers">
@@ -190,7 +189,6 @@
                 "Jesus",
                 "Liebe",
                 "Freunde",
-                "[gemeinsames Urlaubsziel]",
                 "Urlaub",
                 "Glück",
                 "zu viel Alkohol",
@@ -199,16 +197,14 @@
                 "Idefix",
                 "gemeinsame Zeit",
                 "Osterfeuer",
-                "Nino mit dem langen Schwanz",
-                "neugierige Nachbarn",
+                "Nino mit dem langen Hals",
                 "Springe",
                 "Arschloch ohne Ende",
-                "[gemeinsamer Lehrer am OHG]",
+                "Herr Dr. Rohde",
                 "keine Rücksicht auf Verluste",
-                "Faulheit",
                 "Gurkenkrokodil",
                 "Verkehr",
-                "offensiv ausgelebte Ahnungslosigkeit",
+                "offensiv ausgelebte Gemütlichkeit",
                 "blindes Vertrauen",
                 "nicht viel",
                 "zu viel",
@@ -218,18 +214,21 @@
                 "Schierker Feuerstein",
                 "deine Mutter",
                 "Kinder",
-                "Home Office",
                 "Scrum Master",
                 "Frösche und Pinguine",
                 "Eier",
                 "realistische Erwartungen",
-                "Schulweg",
                 "ein halbvolles Bier",
                 "gesunder Menschenverstand",
-                "Umziehen",
                 "schlechte Musik",
                 "eine plötzliche Veränderung",
                 "letzte Nacht im DRK Springe",
+                "Money, Money, Money",
+                "Dancing Queen",
+                "Spieleabend",
+                "Hippies",
+                "Südtirol",
+                "Silvester"
             ];
 
             const selectedAnswers = [
@@ -245,7 +244,6 @@
 
             let round = 0;
 
-            const elWrapper = document.querySelector("#wrapper");
             const elStartscreen = document.querySelector("#startscreen");
             const elSelection = document.querySelector("#selection");
             const elResult = document.querySelector("#result");
@@ -253,30 +251,26 @@
             const elAnswerContents = document.querySelectorAll(".answer > p");
             const elResultSentences = document.querySelectorAll(".result-sentence");
 
-            elWrapper.style.transform = `scale(${window.innerHeight / 864})`;
-            console.log(window.innerHeight);
-
-            /*function startGame() {
-                elWrapper.style.backgroundColor = "white";
+            function startGame() {
                 elStartscreen.style.display = "none";
                 elSelection.style.display = "block";
-            }*/
+            }
 
             function setNewSentence() {
                 elSentence.innerHTML = sentences[round][0] + selectedAnswers[round] + sentences[round][1];
 
                 const answers = returnAnswers();
                 for (let i = 0; i < elAnswerContents.length; i++) {
-                    if (answers[i] === "ein halbvolles Bier" && (round === 0 || round === 6 || round === 7)) {
+                    if (answers[i] === "Herr Dr. Rohde" && (round === 1 || round === 3 || round === 4 || round === 6)) {
+                        answers[i] = "Herrn Dr. Rohde"
+                    } else if (answers[i] === "die Sprache der Tiere" && (round === 0 || round === 6 || round === 7)) {
+                        answers[i] = "Sprache der Tiere";
+                    } else if (answers[i] === "ein halbvolles Bier" && (round === 0 || round === 6 || round === 7)) {
                         answers[i] = "halbvolles Bier";
                     } else if (answers[i] === "gesunder Menschenverstand" && (round === 1 || round === 3 || round === 4 || round === 6)) {
                         answers[i] = "gesunden Menschenverstand";
-                    } else if (answers[i] === "neugierige Nachbarn" && (round === 6 || round === 7)) {
-                        answers[i] = "neugierigen Nachbarn";
-                    } else if (answers[i] === "eine plötzliche Veränderung" && (round === 0 || round === 6 || round === 7)) {
+                    }  else if (answers[i] === "eine plötzliche Veränderung" && (round === 0 || round === 6 || round === 7)) {
                         answers[i] = "plötzliche Veränderung"
-                    } else if (answers[i] === "die Sprache der Tiere" && (round === 0 || round === 6 || round === 7)) {
-                        answers[i] = "Sprache der Tiere";
                     } else if (answers[i] === "realistische Erwartungen" && (round === 6 || round === 7)) {
                         answers[i] = "realistischen Erwartungen";
                     }
@@ -306,42 +300,41 @@
                     setNewSentence();
                 } else {
                     for (let i = 0; i < elResultSentences.length; i++) {
-                        if (selectedAnswers[i] === "Kinder" ||
-                            selectedAnswers[i] === "neugierige Nachbarn" ||
-                            selectedAnswers[i] === "Neugierige Nachbarn" ||
+                        if (selectedAnswers[i] === "Freunde" ||
                             selectedAnswers[i] === "Björn, Niklas, Chris und Lauritz" ||
+                            selectedAnswers[i] === "Kinder" ||
+                            selectedAnswers[i] === "Frösche und Pinguine" ||
+                            selectedAnswers[i] === "Eier" ||
                             selectedAnswers[i] === "realistische Erwartungen" ||
                             selectedAnswers[i] === "Realistische Erwartungen" ||
-                            selectedAnswers[i] === "Eier" ||
-                            selectedAnswers[i] === "Freunde" ||
-                            selectedAnswers[i] === "Frösche und Pinguine") {
+                            selectedAnswers[i] === "Hippies") {
                             if (i === 2) {
                                 sentences[i][1] = " geschahen, wusste ich, dass ihr füreinander bestimmt seid.";
                             } else if (i === 5) {
                                 sentences[i][1] = " müssen euch nicht peinlich sein.";
                             }
                         }
-                        if (selectedAnswers[i] === "Familie" ||
-                            selectedAnswers[i] === "Jana" ||
+                        if (selectedAnswers[i] === "Jana" ||
+                            selectedAnswers[i] === "Familie" ||
                             selectedAnswers[i] === "Gemeinschaft" ||
                             selectedAnswers[i] === "Liebe" ||
                             selectedAnswers[i] === "Freunde" ||
                             selectedAnswers[i] === "Intelligenz" ||
                             selectedAnswers[i] === "gemeinsame Zeit" ||
-                            selectedAnswers[i] === "neugierige Nachbarn" ||
-                            selectedAnswers[i] === "neugierigen Nachbarn" ||
                             selectedAnswers[i] === "keine Rücksicht auf Verluste" ||
-                            selectedAnswers[i] === "Faulheit" ||
-                            selectedAnswers[i] === "letzte Nacht im DRK Springe" ||
-                            selectedAnswers[i] === "offensiv ausgelebte Ahnungslosigkeit" ||
+                            selectedAnswers[i] === "offensiv ausgelebte Gemütlichkeit" ||
                             selectedAnswers[i] === "Sprache der Tiere" ||
-                            selectedAnswers[i] === "schlechte Musik" ||
                             selectedAnswers[i] === "deine Mutter" ||
                             selectedAnswers[i] === "Kinder" ||
+                            selectedAnswers[i] === "Frösche und Pinguine" ||
                             selectedAnswers[i] === "Eier" ||
                             selectedAnswers[i] === "realistische Erwartungen" ||
                             selectedAnswers[i] === "realistischen Erwartungen" ||
-                            selectedAnswers[i] === "plötzliche Veränderung") {
+                            selectedAnswers[i] === "schlechte Musik" ||
+                            selectedAnswers[i] === "plötzliche Veränderung" ||
+                            selectedAnswers[i] === "letzte Nacht im DRK Springe" ||
+                            selectedAnswers[i] === "Dancing Queen" ||
+                            selectedAnswers[i] === "Hippies") {
                             if (i === 0) {
                                 sentences[i][0] = "Liebe ";
                             } else if (i === 6) {
@@ -349,21 +342,22 @@
                             } else if (i === 7) {
                                 sentences[i][0] = "Eure "
                             }
-                        } else if (selectedAnswers[i] === "[gemeinsamer Lehrer am OHG]" ||
+                        } else if (selectedAnswers[i] === "Fabian" ||
                             selectedAnswers[i] === "Jesus" ||
                             selectedAnswers[i] === "Urlaub" ||
                             selectedAnswers[i] === "zu viel Alkohol" ||
-                            selectedAnswers[i] === "Fabian" ||
                             selectedAnswers[i] === "Idefix" ||
-                            selectedAnswers[i] === "Nino mit dem langen Schwanz" ||
+                            selectedAnswers[i] === "Nino mit dem langen Hals" ||
+                            selectedAnswers[i] === "Herr Dr. Rohde" ||
+                            selectedAnswers[i] === "Herrn Dr. Rohde" ||
                             selectedAnswers[i] === "Verkehr" ||
                             selectedAnswers[i] === "Heinrich Göbel" ||
                             selectedAnswers[i] === "Björn, Niklas, Chris und Lauritz" ||
-                            selectedAnswers[i] === "gesunder Menschenverstand" ||
-                            selectedAnswers[i] === "gesunden Menschenverstand" ||
                             selectedAnswers[i] === "Schierker Feuerstein" ||
                             selectedAnswers[i] === "Scrum Master" ||
-                            selectedAnswers[i] === "Schulweg") {
+                            selectedAnswers[i] === "gesunder Menschenverstand" ||
+                            selectedAnswers[i] === "gesunden Menschenverstand" ||
+                            selectedAnswers[i] === "Spieleabend") {
                             if (i === 0) {
                                 sentences[i][0] = "Lieber ";
                             } else if (i === 6) {
@@ -372,19 +366,19 @@
                                 sentences[i][0] = "Euer "
                             }
                         } else if (selectedAnswers[i] === "Brautpaar" ||
-                            selectedAnswers[i] === "[gemeinsames Urlaubsziel]" ||
                             selectedAnswers[i] === "Glück" ||
                             selectedAnswers[i] === "Grillen" ||
                             selectedAnswers[i] === "Osterfeuer" ||
                             selectedAnswers[i] === "Springe" ||
+                            selectedAnswers[i] === "Arschloch ohne Ende" ||
+                            selectedAnswers[i] === "Gurkenkrokodil" ||
                             selectedAnswers[i] === "blindes Vertrauen" ||
                             selectedAnswers[i] === "nicht viel" ||
                             selectedAnswers[i] === "zu viel" ||
                             selectedAnswers[i] === "halbvolles Bier" ||
-                            selectedAnswers[i] === "Arschloch ohne Ende" ||
-                            selectedAnswers[i] === "Gurkenkrokodil" ||
-                            selectedAnswers[i] === "Home Office"||
-                            selectedAnswers[i] === "Umziehen") {
+                            selectedAnswers[i] === "Money, Money, Money"||
+                            selectedAnswers[i] === "Südtirol" ||
+                            selectedAnswers[i] === "Silvester") {
                             if (i === 0) {
                                 sentences[i][0] = "Liebes ";
                             } else if (i === 6) {
